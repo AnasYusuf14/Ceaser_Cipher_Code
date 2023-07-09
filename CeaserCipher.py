@@ -23,10 +23,20 @@ shift_number = int(input("Enter the shift number: \n"))
 
 def ceasar(str , shift , direction):
     if direction == "encode":
-        cipher_text = ''.join(chr((ord(letter) - 97 + shift) % 26 + 97) for letter in str)
+        cipher_text =""
+        for letter in str:
+            if letter.isalpha():
+                cipher_text += ''.join(chr((ord(letter) - 97 + shift) % 26 + 97) )
+            else:
+                cipher_text += letter
         print(f"Encrypted text is {cipher_text}")
     elif direction == "decode":
-        decrypted_text = ''.join(chr((ord(letter) - 97 - shift) % 26 + 97) for letter in str)
+        decrypted_text=""
+        for letter in str:
+            if letter.isalpha():
+                decrypted_text += ''.join(chr((ord(letter) - 97 - shift) % 26 + 97) )
+            else: 
+                decrypted_text += letter  
         print(f"Decrypted text is {decrypted_text}")
     else:
         print("Enter only 'encode' or 'decode' !!") 
